@@ -4,7 +4,7 @@ var Customer = mongoose.model('Customer');
 module.exports = (function(){
 	return {
 		show: function(req, res){
-			console.log('reached the frieds controllers show method');
+			console.log('reached the customers controllers show method');
 			Customer.find({}, function(err, results){
 				if(err){
 					console.log(err);

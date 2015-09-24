@@ -10,37 +10,18 @@
 	<script type="text/javascript">
 		var customerApp = angular.module('customerApp', ['ngRoute']);
 	</script>
+	<script type="text/javascript" src="/javascripts/app.js"></script>
 	<script src="/javascripts/factories/CustomerFactory.js"></script>
 	<script src="/javascripts/controllers/customersController.js"></script>
+	<script src="/javascripts/factories/orderFactory.js"></script>
+	<script src="/javascripts/controllers/ordersController.js"></script>
 	
 </head>
 <body>
 	<div class="nav">
-		<a href="#customers">Customer</a> | <a href="#/orders">Orders</a>
+		<a href="#/customers">Customers</a> | <a href="#/orders">Orders</a>
 	</div>
-<div class="customer" ng-controller="customersController as customers">
-	<h1>Add a new customer</h1>
-	<form>
-		<label>Customer Name: <input ng-model="customers.new_customer.name" type="text"/ ></label>
-		<input type="submit" ng-click="customers.addCustomer()">
-	</form>
-	<input type="text" ng-model="filter_name" placeholder="search name...">
-	<p ng-bind="filter_name"></p>
-	<table>
-		<thead>
-			<th>Customer Name</th>
-			<th>Created Date</th>
-			<th>Action</th>
-		</thead>
-		<tbody>
-			<tr ng-repeat="customer in customers.customers | filter:filter_name">
-				<td ng-bind="customer.name"></td>
-				<td ng-bind="customer.created_at"></td>
-				<td><button ng-click="customers.deleteCustomer(customer._id)">Remove</button></td>
-			</tr>
-		</tbody>
-	</table>
-</div>
+
 	<div class='container' ng-view="">
 			
 	</div>
