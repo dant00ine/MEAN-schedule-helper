@@ -1,27 +1,21 @@
-var customers = require('../controllers/customers.js');
-var orders = require('../controllers/orders.js');
+
+var users = require('../controllers/users.js')
 
 module.exports = function(app) {
-    app.get('/customers', function(req, res) {
-    	console.log("in get for server routes");
-        customers.show(req, res);
-    });
+    
+    app
 
-    app.post('/customers', function(req, res){
-    	console.log('in server side routes');
-    	console.log(req.body);
-    	customers.add(req, res);
-    });
+	.post('/users', function(req, res){
+		console.log('data passing through server routes', req.body)
+		users.create(req, res)
+	})
 
-    app.delete('/customers/:id', function(req, res){
-    	customers.delete(req, res);
-    })
+	// .get('/*', function(request, response){
+	// 	response.redirect('/')
+	// })
 
-    app.get('/orders', function(req, res){
-    	orders.show(req, res);
-    })
+	// .post('/*', function(request, response){
+	// 	response.redirect('/')
+	// })
 
-    app.post('/orders', function(req, res){
-    	orders.add(req, res);
-    })
   }

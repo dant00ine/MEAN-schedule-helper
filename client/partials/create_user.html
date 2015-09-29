@@ -1,0 +1,29 @@
+<div ng-controller="users" class="col-md-4">
+	<a href="#/">Go Back</a>
+	<h3>New Scribe</h3>
+	<p>Please enter information for new scribe; scribe will change password on first signin</p>
+
+	<div class="form-group">
+		<label>first name:</label>
+		<input type="text" class="form-control" ng-model="new_user.first_name">
+	</div>
+
+	<div class="form-group">
+		<label>last name:</label>
+		<input type="text" class="form-control" ng-model="new_user.last_name">
+	</div>
+
+	<div class="form-group">
+		<label>email:</label>
+		<input type="text" class="form-control" ng-model="new_user.email">
+	</div>
+
+	<label>location:</label>
+	<select class = "form-control" ng-model="new_user.location">
+		<option>Overlake</option>
+		<option>Providence</option>
+	</select><br>
+
+	<input class ="btn btn-primary" type="submit" ng-click="createUser()">
+	<a href="#/"><button class="btn btn-danger">Cancel</button></a>
+</div>

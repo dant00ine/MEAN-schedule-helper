@@ -1,17 +1,18 @@
 console.log('routes reach');
-customerApp.config(function ($routeProvider) {
+scribeApp.config(function ($routeProvider) {
       $routeProvider
 
-        .when('/customers', {
-          templateUrl: '../partials/customers.html'
-        })
+        // .when('/customers', {
+        //   templateUrl: '../partials/customers.html'
+        // })
 
-        .when('/orders',{
-            templateUrl: '../partials/orders.html'
+        .when('/createUser',{
+            // console.log('createUser url triggered');
+            templateUrl: '../partials/create_user.html'
         })
 
         .otherwise({
-          templateUrl: '../partials/customers.html'
+            templateUrl: '../partials/login.html'
         });
         
     });

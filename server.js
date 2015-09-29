@@ -10,12 +10,10 @@ var bodyParser = require('body-parser');
 var app = express();
 app.use(bodyParser.json());
 
-//require mongoose
-require('./server/config/mongoose.js');
 //require the routes file server-side
 require('./server/config/routes.js')(app);
 
 app.use(express.static(path.join(__dirname, './client')));
 app.listen(8000, function() {
-  console.log('cool stuff on: 8000');
+  console.log('running on port: 8000');
 });
