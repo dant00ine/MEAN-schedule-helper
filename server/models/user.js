@@ -1,15 +1,11 @@
 
-// var database = require('../config/sql.js')
-
-
-var mysql = require('mysql');
-		var connection = mysql.createConnection({
-		  host     : 'localhost',
-		  user     : 'root',
-		  password : 'root',
-		  database : 'ScribeShifts'
-		});
-		 
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : 'root',
+  database : 'ScribeShifts'
+});
 
 
 module.exports = (function(){

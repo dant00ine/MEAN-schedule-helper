@@ -15,11 +15,15 @@
 	<script src="/javascripts/controllers/loginController.js"></script>
 	<script src="/javascripts/factories/userFactory.js"></script>
 	<script src="/javascripts/controllers/usersController.js"></script>
+	<script src="/javascripts/factories/locationFactory.js"></script>
+	<script src="/javascripts/controllers/locationsController.js"></script>
 	
 </head>
 <body>
-	<a href="#/createUser">CREATE USER</a>
 	<div ng-controller="login as login">
+		<a href="#/createUser">CREATE USER</a> |
+		<a href="#/createLocation">CREATE LOCATION</a>
+
 		<div class='container' ng-view="">
 			
 		</div>
