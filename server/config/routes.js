@@ -10,6 +10,16 @@ module.exports = function(app) {
 		users.create(req, res)
 	})
 
+	.post('/login', function(req, res){
+			console.log('routes request:', req.body)
+			console.log('response from login:', res.body)
+			users.validate(req, res)
+		}
+
+    );
+
+	
+
 	// .get('/*', function(request, response){
 	// 	response.redirect('/')
 	// })

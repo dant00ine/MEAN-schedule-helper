@@ -1,4 +1,4 @@
-console.log('routes reach');
+
 scribeApp.config(function ($routeProvider) {
       $routeProvider
 

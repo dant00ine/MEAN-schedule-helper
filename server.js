@@ -1,19 +1,31 @@
-// require express so that we can build an express app
+// require express and begin server
 var express = require('express');
-// require path so that we can use path stuff like path.join
+var app = express();
+app.use(express.static('./client'));
+
+//modules to help with the backend flow
+var flash = require('flash')
 var path = require('path');
-// instantiate the app
-var app = express();
-// set up a static file server that points to the "client" directory
 var bodyParser = require('body-parser');
-// instantiate the app
-var app = express();
 app.use(bodyParser.json());
 
-//require the routes file server-side
-require('./server/config/routes.js')(app);
+//passport and error handling modules
+var expressSession = require('express-session');
+app.use(expressSession({secret: 'meandand'}));
+app.use(flash());
 
-app.use(express.static(path.join(__dirname, './client')));
-app.listen(8000, function() {
-  console.log('running on port: 8000');
-});
+// var passport = require('passport');
+// app.use(passport.initialize());
+// app.use(passport.session());
+
+//Pass ROUTES necessary information
+require('./server/config/routes.js')(app);
+// require('./server/config/passport.js')(passport);
+
+//view engine
+app.set('view engine', 'ejs');
+
+app.listen(1337, function(){
+  console.log('**----- port 1337 -----**');
+  console.log('**----- ohso leet -----**');
+})

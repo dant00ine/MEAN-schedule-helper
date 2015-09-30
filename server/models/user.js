@@ -1,13 +1,16 @@
 
-var mysql      = require('mysql');
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : 'root',
-  database : 'ScribeShifts'
-});
- 
-connection.connect();
+// var database = require('../config/sql.js')
+
+
+var mysql = require('mysql');
+		var connection = mysql.createConnection({
+		  host     : 'localhost',
+		  user     : 'root',
+		  password : 'root',
+		  database : 'ScribeShifts'
+		});
+		 
+
 
 module.exports = (function(){
 	return {
@@ -15,7 +18,7 @@ module.exports = (function(){
 
 			console.log('USER MODEL', req.body)
 
-			var query = "INSERT INTO users (first_name, last_name, email, password, admin, location_id, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)"
+			var query = "INSERT INTO users (first_name, last_name, email, password, admin, location_id, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
 
 			var now = new Date();
 
@@ -31,8 +34,24 @@ module.exports = (function(){
 					res.json(results);
 				}
 			});
+		},
 
-			connection.end();
+		find: function(req, res){
+
+			console.log('in find method of user model')
+			var query = "SELECT * FROM users WHERE email = ? AND password = ?"
+
+			var values = [req.body.email, req.body.password]
+
+			connection.query(query, values, function(error, results, fields){
+				if(error){
+					console.log('MYSQL ERROR:', error)
+				} else {
+					console.log('successfully found user')
+					// return results;
+					res.json({success: true});
+				}
+			})
 		}
 	}
 })();
