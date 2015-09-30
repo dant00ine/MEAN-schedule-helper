@@ -11,6 +11,10 @@ scribeApp.config(function ($routeProvider) {
             templateUrl: '../partials/create_user.html'
         })
 
+        .when('/createLocation',{
+            templateUrl: '../partials/add_location.html'
+        })
+
         .otherwise({
             templateUrl: '../partials/login.html'
         });

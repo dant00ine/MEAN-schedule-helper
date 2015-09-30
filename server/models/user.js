@@ -1,4 +1,3 @@
-
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
@@ -6,7 +5,7 @@ var connection = mysql.createConnection({
   password : 'root',
   database : 'ScribeShifts'
 });
- 
+
 connection.connect();
 
 module.exports = (function(){
