@@ -15,7 +15,7 @@ module.exports = function(app) {
 			console.log('routes request:', req.body)
 			console.log('response from login:', res.body)
 			users.validate(req, res)
-	});
+	})
 
 	.post('/locations', function(req, res){
 		console.log('data passing through server routes', req.body);

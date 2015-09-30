@@ -2,9 +2,9 @@
 scribeApp.config(function ($routeProvider) {
       $routeProvider
 
-        // .when('/customers', {
-        //   templateUrl: '../partials/customers.html'
-        // })
+        .when('/login', {
+          templateUrl: '../partials/login.html'
+        })
 
         .when('/createUser',{
             // console.log('createUser url triggered');
