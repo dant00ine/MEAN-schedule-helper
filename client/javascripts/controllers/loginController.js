@@ -6,7 +6,7 @@ scribeApp.controller('login', function($scope, $location, loginFactory){
 
 		console.log("login controller info:", that.info)
 		loginFactory.login(that.info, function(response){
-			console.log('response through controller callback:', response)
+			
 			if(response.admin){
 				//REDIRECT TO ADMIN DASH
 				$location.path('/admin_calendar')
@@ -16,6 +16,13 @@ scribeApp.controller('login', function($scope, $location, loginFactory){
 			}
 		})
 
+	}
+
+	that.editPW = function(){
+		console.log("edit password ngController:", that.new_pw)
+		loginFactory.editPW(that.new_pw, function(response){
+			console.log('response ngController EDITPW:', response)
+		})
 	}
 		
 })

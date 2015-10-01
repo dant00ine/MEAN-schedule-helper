@@ -1,6 +1,6 @@
-<h1>User Profile</h1>
+<h1>Change Password</h1>
+<p>Just enter the new pw and don't forget it!</p>
 
-
-<h2>User Name: NAME</h2>
-<h2>User Email: EMAIL</h2>
-<button>Reset Password</button>
+<input type="password" ng-model="login.new_pw">
+<input type="password_confirm" ng-model="login.new_pw_conf">
+<button ng-click="login.editPW()">Commit new Password</button>

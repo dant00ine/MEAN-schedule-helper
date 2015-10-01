@@ -10,9 +10,9 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 //passport and error handling modules
-var expressSession = require('express-session');
-app.use(expressSession({secret: 'meandand'}));
-app.use(flash());
+// var expressSession = require('express-session');
+// app.use(expressSession({secret: 'meandand'}));
+// app.use(flash());
 
 // var passport = require('passport');
 // app.use(passport.initialize());
@@ -23,7 +23,7 @@ require('./server/config/routes.js')(app);
 // require('./server/config/passport.js')(passport);
 
 //view engine
-app.set('view engine', 'ejs');
+// app.set('view engine', 'ejs');
 
 app.listen(1337, function(){
   console.log('**----- port 1337 -----**');

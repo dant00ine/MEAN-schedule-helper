@@ -11,10 +11,14 @@ module.exports = function(app) {
 		users.create(req, res)
 	})
 
+	.post('/users/edit/:id', function(req, res){
+		console.log('data passing through server routes', req.body)
+		users.editPW(req, res)
+	})
+
 	.post('/login', function(req, res){
-			console.log('routes request:', req.body)
-			console.log('response from login:', res.body)
-			users.validate(req, res)
+		console.log('routes request:', req.body)
+		users.validate(req, res)
 	})
 
 	.post('/locations', function(req, res){

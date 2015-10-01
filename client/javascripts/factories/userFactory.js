@@ -11,11 +11,6 @@ scribeApp.factory('userFactory', function($http){
 		})
 	}
 
-	// factory.getLocation = function(){
-
-	// 	var respose = 
-	// }
-
 
 	return factory;
 })
