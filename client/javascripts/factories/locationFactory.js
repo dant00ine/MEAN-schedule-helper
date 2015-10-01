@@ -24,6 +24,13 @@ scribeApp.factory('locationFactory', function($http){
 		})
 	}
 
+	factory.allShifts = function(callback) {
+		console.log('ngfactory LOCATIONS / GET(allShifts)');
+		$http.get('/shifts').success(function (output){
+			callback(output);
+		})
+	}
+
 	return factory;
 
 })

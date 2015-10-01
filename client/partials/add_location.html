@@ -14,7 +14,7 @@
 		<label for='locationSelect'>Select Location:</label>
 		<select class = "form-control" name='locationSelect' ng-model="new_shift.location" ng-options='location.name for location in locations'>
 			<option>----Please Select----</option>
-			<option value='{{location.id}}'></option>
+			<option></option>
 		</select>
 	</div>
 
@@ -31,4 +31,9 @@
 	<input class ="btn btn-secondary" type="submit" value='Add Shift to Location' ng-click="addShift()">	
 
  </div>
+
+<div ng-controller='locations' class="col-md-4">
+	
+
+</div>
 

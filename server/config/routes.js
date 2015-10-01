@@ -32,6 +32,11 @@ module.exports = function(app) {
 		locations.all(req, res);
 	})
 
+	.get('/shifts', function(req, res){
+		console.log('getting all shifts by location in routes');
+		locations.all_shifts(req, res);
+	})
+
 	// .get('/*', function(request, response){
 	// 	response.redirect('/')
 	// })

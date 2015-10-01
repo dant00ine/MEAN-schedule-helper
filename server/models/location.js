@@ -71,6 +71,21 @@ module.exports = (function(){
 					res.json(results);
 				}
 			})
+		},
+
+		get_shifts: function(req, res){
+			console.log('LOCATION MODEL / GET SHIFTS');
+
+			var query = "SELECT shifts.id as id, shifts.start as start_time, shifts.end as end_time, shifts.locations_id as location_id, locations.name FROM shifts JOIN locations on locations.id = shifts.locations_id";
+
+			connection.query(query, function(error, results, fields){
+				if(error){
+					console.log("MYSQL ERROR:", error);
+				} else {
+					res.json(results);
+				}
+			})
 		}
+
 	}
 })();

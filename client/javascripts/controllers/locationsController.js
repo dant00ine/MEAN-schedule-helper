@@ -6,6 +6,13 @@ scribeApp.controller('locations', function($scope, locationFactory){
 		$scope.locations = output;
 	});
 
+
+	locationFactory.allShifts(function (output){
+		$scope.shifts = output;
+		console.log($scope.shifts);
+
+		})
+
 	$scope.createLocation = function(){
 		console.log('ngController / LOCATIONS / CREATE')
 		locationFactory.createLocation($scope.new_location, function(response){
