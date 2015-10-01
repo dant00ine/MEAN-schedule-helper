@@ -4,6 +4,8 @@
 	<meta charset="UTF-8">
 	<title>scribeApp</title>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link href='../styles/fullcalendar.css' rel='stylesheet' />
+	<link href='../styles/fullcalendar.print.css' rel='stylesheet' media='print' />
 	<script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-route.js"></script>
@@ -17,12 +19,20 @@
 	<script src="/javascripts/controllers/usersController.js"></script>
 	<script src="/javascripts/factories/locationFactory.js"></script>
 	<script src="/javascripts/controllers/locationsController.js"></script>
+	<script src='../lib/moment.min.js'></script>
+	<script src='../lib/jquery.min.js'></script>
+	<script src='../styles/fullcalendar.min.js'></script>
 	
 </head>
 <body>
 	<div ng-controller="login as login">
-		<a href="#/createUser">CREATE USER</a> |
-		<a href="#/createLocation">CREATE LOCATION</a>
+
+		<nav>
+			<a href="#/createUser">CREATE USER</a> |
+			<a href="#/createLocation">CREATE LOCATION</a> |
+			<a href="#/calendar">CALENDAR</a> |
+			<a href="#/profile">PROFILE</a>
+		</nav>
 
 		<div class='container' ng-view="">
 			
