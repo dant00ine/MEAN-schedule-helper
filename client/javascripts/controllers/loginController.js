@@ -1,5 +1,5 @@
 
-scribeApp.controller('login', function($scope, loginFactory){
+scribeApp.controller('login', function($scope, $location, loginFactory){
 	var that = this;
 
 	that.login = function(){
@@ -7,10 +7,12 @@ scribeApp.controller('login', function($scope, loginFactory){
 		console.log("login controller info:", that.info)
 		loginFactory.login(that.info, function(response){
 			console.log('response through controller callback:', response)
-			if(response.success){
-				res.redirect('#/login')
+			if(response.admin){
+				//REDIRECT TO ADMIN DASH
+				$location.path('/admin_calendar')
 			} else {
-				//ERROR HANDLING
+				//REDIRECT TO USER
+				$location.path('/user_calendar')
 			}
 		})
 

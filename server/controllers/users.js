@@ -14,7 +14,7 @@ module.exports = (function(){
 
 
 			// console.log("find results:", results)
-			// console.log('bod:',res.body)
+			console.log('bod:',res.body)
 			// console.log('json:',res.json)
 		}
 	}

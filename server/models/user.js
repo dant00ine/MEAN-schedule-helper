@@ -35,17 +35,21 @@ module.exports = (function(){
 		find: function(req, res){
 
 			console.log('in find method of user model')
-			var query = "SELECT * FROM users WHERE email = ? AND password = ?"
+			var query = "SELECT * FROM users WHERE email = ?"
 
-			var values = [req.body.email, req.body.password]
+			var values = [req.body.email]
 
 			connection.query(query, values, function(error, results, fields){
 				if(error){
 					console.log('MYSQL ERROR:', error)
 				} else {
-					console.log('successfully found user')
-					// return results;
-					res.json({success: true});
+					console.log('successfully found user:', results)
+					console.log(results[0].admin)
+					if(results[0].admin == 1){
+						res.json({admin: true})
+					} else {
+						res.json({admin: false})
+					}
 				}
 			})
 		}
