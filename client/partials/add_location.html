@@ -12,23 +12,23 @@
 
 	<div class="form-group">
 		<label for='locationSelect'>Select Location:</label>
-		<select class = "form-control" name='locationSelect' ng-model="location">
-			<option value="">----Please Select----</option>
-			<option ng-repeat='location in locations' value='{{location.id}}'>{{location.name}}</option>
+		<select class = "form-control" name='locationSelect' ng-model="new_shift.location" ng-options='location.name for location in locations'>
+			<option>----Please Select----</option>
+			<option value='{{location.id}}'></option>
 		</select>
 	</div>
 
 	<div class="form-group">
 		<label>Shift Start:</label>
-		<input type="time" class="form-control" ng-model="new_shift.start">
+		<input type="time" step="1800" class="form-control" ng-model="new_shift.start">
 	</div>
 
 	<div class="form-group">
 		<label>Shift End:</label>
-		<input type="time" class="form-control" ng-model="new_shift.end">
+		<input type="time" step="1800" class="form-control" ng-model="new_shift.end">
 	</div>
 
-	<input class ="btn btn-secondary" type="submit" value='Add Shift to Location' ng-click="createShift()">	
+	<input class ="btn btn-secondary" type="submit" value='Add Shift to Location' ng-click="addShift()">	
 
  </div>
 

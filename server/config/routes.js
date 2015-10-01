@@ -15,7 +15,7 @@ module.exports = function(app) {
 			console.log('routes request:', req.body)
 			console.log('response from login:', res.body)
 			users.validate(req, res)
-	});
+	})
 
 	.post('/locations', function(req, res){
 		console.log('data passing through server routes', req.body);
@@ -24,7 +24,7 @@ module.exports = function(app) {
 
 	.post('/locations/add_shift', function(req, res){
 		console.log('data passing through server routes', req.body);
-		locations.create(req, res);
+		locations.add_shift(req, res);
 	})	
 
 	.get('/locations', function(req, res){
