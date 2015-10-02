@@ -32,11 +32,20 @@
 
  </div>
 
-<div ng-controller='locations' class="col-md-4">
-	<table>
-		<th>
-			<tr></tr>
-		</th>
+<div class="table-group" ng-controller='locations' class="col-md-4">
+	<table class="tbl tbl-striped">
+		<thead>
+			<th>Location</th>
+			<th>Shift Start</th>
+			<th>Shift End</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat='shift in shifts'>
+				<td ng-bind='shift.name'></td>
+				<td ng-bind='shift.start_time'></td>
+				<td ng-bind='shift.end_time'></td>
+			</tr>
+		</tbody>
 	</table>
 
 </div>

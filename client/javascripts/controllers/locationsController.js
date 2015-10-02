@@ -1,39 +1,44 @@
 scribeApp.controller('locations', function($scope, locationFactory){
-		var shifts = [
-				{
-					id: 1, //location id repeated everyday
-					title: 'Repeating Event',
-					start: '2015-10-01' //the start of a moment object
-				},
-				{
-					id: 1,
-					title: 'Repeating Event',
-					start: '2015-10-01'
-				},
-				{
-					id: 1,
-					title: 'Repeating Event',
-					start: '2015-10-03'
-				}
-			];
-		var shifts2 = [
-				{
-					id: 2,
-					title: 'Repeating Event',
-					start: '2015-10-04'
-				},
-				{
-					id: 2,
-					title: 'Repeating Event',
-					start: '2015-10-05'
-				},
-				{
-					id: 2,
-					title: 'Repeating Event',
-					start: '2015-09-06'
-				}
-			];
+	
+	var that = this;
+
+	var shiftData = function() {
+		locationFactory.allShifts(function (output){
+		$scope.shifts = output;
+	
+		var split_time = $scope.shifts[0].start_time.split("T"); //splitting original database shift timestamp on "T", where time part starts
+
+		var shifts3 = [];
+		for(var i = 0; i < 3; i++){
+
+			split_time[0] = moment().date(i)._d.toString().split(" "); //splitting the datestamp on spaces (" ")
+			split_time[0][4] = split_time[1]; 
+			var shift = "";
+			for(var k = 0; k<split_time[0].length; k++){
+				shift += split_time[0][k]+" ";
+			}
+
+
+			
+			var shift_start = moment(shift, "ddd MMM DD YYYY HH:mm:ss").format();
+			shift_start._isUTC = true;
+			console.log(shift_start);
+			$scope.shifts[0].start = shift_start;
+			console.log($scope.shifts[0].start);
+			shifts3.push({title:'Repeating Event', allDay: false, start: $scope.shifts[0].start});
+		}
+		console.log(shifts3);
+		// console.log(split_time);
+		return shifts3;
+		}) 
+	}
+
+	var shiftObject = shiftData();
+	
+
+	// console.log(all_shifts);
 	var loadCalendar = function(shiftData){
+
 		var $overlay = $("<div id='overlay'></div>");
 		console.log($scope.working);
 		$("body").append($overlay);
@@ -62,10 +67,10 @@ scribeApp.controller('locations', function($scope, locationFactory){
 			defaultDate: moment(),//gets todays date
 			editable: false,//makes the calendar static
 			eventLimit: true // allow "more" link when too many events			
-		}).fullCalendar( 'addEventSource', shiftData );//this can be a URL to get the shifts
+		});//this can be a URL to get the shifts
 	}
 	$scope.working = "working with scope";
-	loadCalendar(shifts);
+	loadCalendar(shiftData());
 
 	locationFactory.allLocations(function (output){
 		$scope.locations = output;
@@ -73,11 +78,6 @@ scribeApp.controller('locations', function($scope, locationFactory){
 	});
 
 
-	locationFactory.allShifts(function (output){
-		$scope.shifts = output;
-		console.log($scope.shifts);
-
-		})
 
 	$scope.createLocation = function(){
 		console.log('ngController / LOCATIONS / CREATE')
