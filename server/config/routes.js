@@ -6,19 +6,25 @@ module.exports = function(app) {
     
     app
 
+    // .get('/users', function(req, res){
+    // 	console.log("Cookies:", req.cookies)
+    // 	console.log("request body:", req.body)
+    // 	users.find(req, res)
+    // })
+
 	.post('/users', function(req, res){
 		console.log('data passing through server routes', req.body)
 		users.create(req, res)
 	})
 
-	.post('/users/edit/:id', function(req, res){
+	.post('/users/edit', function(req, res){
 		console.log('data passing through server routes', req.body)
 		users.editPW(req, res)
 	})
 
 	.post('/login', function(req, res){
 		console.log('routes request:', req.body)
-		users.validate(req, res)
+		users.find(req, res)
 	})
 
 	.post('/locations', function(req, res){
@@ -34,6 +40,10 @@ module.exports = function(app) {
 	.get('/locations', function(req, res){
 		console.log('getting locations through server routes');
 		locations.all(req, res);
+	})
+
+	.get('/login', function(req, res){
+		res.send({user_id: req.session.user_id})
 	})
 
 	// .get('/*', function(request, response){

@@ -6,7 +6,7 @@ module.exports = (function(){
 			User.create(req, res)
 		},
 
-		validate: function(req, res){
+		find: function(req, res){
 			User.find(req, res)
 		},
 

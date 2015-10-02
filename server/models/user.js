@@ -43,9 +43,11 @@ module.exports = (function(){
 				if(error){
 					console.log('MYSQL ERROR:', error)
 				} else {
+
+					req.session.user_id = results[0].id
+					console.log('session user id:', req.session.user_id)
 					
 					if(results[0].admin == 1){
-						console.log(results[0])
 						res.json({admin: true, id: results[0].id})
 					} else {
 						res.json({admin: false, id: results[0].id})
@@ -56,13 +58,15 @@ module.exports = (function(){
 
 		editPW: function(req, res){
 
+			console.log('in EDITPW method of user model')
+
 			var query = "UPDATE users SET password = ? WHERE id = ?"
 
-			var values = [req.body.new_pw, req.params.id]
+			var values = [req.body.new_pw, req.session.user_id]
 
 			console.log('values in login model:', values)
 
-			
+
 		}
 	}
 })();
