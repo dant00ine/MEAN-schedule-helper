@@ -26,8 +26,7 @@ module.exports = (function(){
 				if(error){
 					console.log('MYSQL ERROR:', error)
 				} else {
-					console.log('results:', results)
-					console.log('fields:', fields)
+
 
 					res.json(results);
 				}
@@ -46,14 +45,32 @@ module.exports = (function(){
 				if(error){
 					console.log('MYSQL ERROR:', error);
 				} else {
-					console.log('results:', results);
-					console.log('fields:', fields);
+
 
 					res.json(results);
 				}
 			});
 
 			
+		},
+
+		add_shift: function(req, res){
+			console.log('LOCATION MODEL / ADD SHIFT');
+
+			var query = "INSERT INTO shifts (start, end, created_at, updated_at, locations_id) VALUES (?, ?, ?, ?, ?)";
+
+			var now = new Date();
+
+			var values = [req.body.start, req.body.end, now, now, req.body.location.id];
+			console.log(req.body.start);
+			connection.query(query, values, function(error, results, fields){
+				if(error){
+					console.log("MYSQL ERROR:", error);
+				} else{
+
+					res.json(results);
+				}
+			})
 		}
 	}
 })();
