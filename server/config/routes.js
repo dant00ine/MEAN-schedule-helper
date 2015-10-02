@@ -24,7 +24,7 @@ module.exports = function(app) {
 
 	.post('/locations/add_shift', function(req, res){
 		console.log('data passing through server routes', req.body);
-		locations.create(req, res);
+		locations.add_shift(req, res);
 	})	
 
 	.get('/locations', function(req, res){

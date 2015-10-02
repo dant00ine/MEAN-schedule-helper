@@ -2,9 +2,10 @@
 scribeApp.config(function ($routeProvider) {
   $routeProvider
 
-    // .when('/customers', {
-    //   templateUrl: '../partials/customers.html'
-    // })
+    .when('/login', {
+      templateUrl: '../partials/login.html'
+    })
+
     .when('/calendar', {
         templateUrl: '../partials/calendar.partial.html'
     })

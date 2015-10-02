@@ -81,8 +81,10 @@ scribeApp.controller('locations', function($scope, locationFactory){
 
 	$scope.addShift = function(){
 		console.log('ngController / SHIFT / CREATE');
-		locationFactory.addShift($scope.add_shift, function(response){
+		console.log($scope.new_shift);
+		locationFactory.addShift($scope.new_shift, function(response){
 			console.log('response reached ngLocationController through factory callback', response);
+			console.log($scope.new_shift);
 		})
 	}
 

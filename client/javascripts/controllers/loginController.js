@@ -8,7 +8,7 @@ scribeApp.controller('login', function($scope, loginFactory){
 		loginFactory.login(that.info, function(response){
 			console.log('response through controller callback:', response)
 			if(response.success){
-				res.redirect('')
+				res.redirect('#/login')
 			} else {
 				//ERROR HANDLING
 			}

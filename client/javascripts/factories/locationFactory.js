@@ -18,8 +18,8 @@ scribeApp.factory('locationFactory', function($http){
 	}
 
 	factory.addShift = function(new_shift, callback) {
-		console.log('ngfactory LOCATIONS / SHIFT');
-		$http.post('/locations/add_shift').success(function (output){
+		console.log('ngfactory LOCATIONS / SHIFT', new_shift);
+		$http.post('/locations/add_shift', new_shift).success(function (output){
 			callback(output);
 		})
 	}
