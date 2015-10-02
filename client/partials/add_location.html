@@ -12,23 +12,41 @@
 
 	<div class="form-group">
 		<label for='locationSelect'>Select Location:</label>
-		<select class = "form-control" name='locationSelect' ng-model="location">
-			<option value="">----Please Select----</option>
-			<option ng-repeat='location in locations' value='{{location.id}}'>{{location.name}}</option>
+		<select class = "form-control" name='locationSelect' ng-model="new_shift.location" ng-options='location.name for location in locations'>
+			<option>----Please Select----</option>
+			<option></option>
 		</select>
 	</div>
 
 	<div class="form-group">
 		<label>Shift Start:</label>
-		<input type="time" class="form-control" ng-model="new_shift.start">
+		<input type="time" step="1800" class="form-control" ng-model="new_shift.start">
 	</div>
 
 	<div class="form-group">
 		<label>Shift End:</label>
-		<input type="time" class="form-control" ng-model="new_shift.end">
+		<input type="time" step="1800" class="form-control" ng-model="new_shift.end">
 	</div>
 
-	<input class ="btn btn-secondary" type="submit" value='Add Shift to Location' ng-click="createShift()">	
+	<input class ="btn btn-secondary" type="submit" value='Add Shift to Location' ng-click="addShift()">	
 
  </div>
+
+<div class="table-group" ng-controller='locations' class="col-md-4">
+	<table class="tbl tbl-striped">
+		<thead>
+			<th>Location</th>
+			<th>Shift Start</th>
+			<th>Shift End</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat='shift in shifts'>
+				<td ng-bind='shift.name'></td>
+				<td ng-bind='shift.start_time'></td>
+				<td ng-bind='shift.end_time'></td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>
 

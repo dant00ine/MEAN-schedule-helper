@@ -34,7 +34,7 @@ module.exports = function(app) {
 
 	.post('/locations/add_shift', function(req, res){
 		console.log('data passing through server routes', req.body);
-		locations.create(req, res);
+		locations.add_shift(req, res);
 	})	
 
 	.get('/locations', function(req, res){
@@ -44,6 +44,10 @@ module.exports = function(app) {
 
 	.get('/login', function(req, res){
 		res.send({user_id: req.session.user_id})
+
+	.get('/shifts', function(req, res){
+		console.log('getting all shifts by location in routes');
+		locations.all_shifts(req, res);
 	})
 
 	// .get('/*', function(request, response){

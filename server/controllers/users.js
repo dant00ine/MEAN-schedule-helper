@@ -13,5 +13,7 @@ module.exports = (function(){
 		editPW: function(req, res){
 			User.editPW(req, res)
 		}
+
+		
 	}
 })();
