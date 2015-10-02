@@ -44,6 +44,7 @@ module.exports = function(app) {
 
 	.get('/login', function(req, res){
 		res.send({user_id: req.session.user_id})
+	})
 
 	.get('/shifts', function(req, res){
 		console.log('getting all shifts by location in routes');
