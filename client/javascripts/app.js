@@ -7,6 +7,7 @@ scribeApp.config(function ($routeProvider) {
     })
 
     .when('/admin_calendar', {
+        controller: 'locations',
         templateUrl: '../partials/admin_calendar.partial.html'
     })
 

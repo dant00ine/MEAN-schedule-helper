@@ -2,6 +2,15 @@ scribeApp.controller('locations', function($scope, locationFactory){
 	
 	var that = this;
 
+	var shifts = [
+		{start: "2015-10-02", title:"Morning Shift"},
+		{start: "2015-10-04", title:"Afternoon Shift"},
+		{start: "2015-10-05", title:"Morning Shift"},
+		{start: "2015-10-07", title:"Evening Shift"},
+		{start: "2015-10-18", title:"Morning Shift"},
+		{start: "2015-10-24", title:"Graveyard Shift"},
+	];
+
 	var shiftData = function() {
 		locationFactory.allShifts(function (output){
 		$scope.shifts = output;
@@ -28,18 +37,19 @@ scribeApp.controller('locations', function($scope, locationFactory){
 			shifts3.push({title:'Repeating Event', allDay: false, start: $scope.shifts[0].start});
 		}
 		console.log(shifts3);
-		// console.log(split_time);
+		console.log(split_time);
 		return shifts3;
 		}) 
 	}
 
-	var shiftObject = shiftData();
 	
 
 	// console.log(all_shifts);
 	var loadCalendar = function(shiftData){
 
 		var $overlay = $("<div id='overlay'></div>");
+		
+
 		console.log($scope.working);
 		$("body").append($overlay);
 		$('#calendar').fullCalendar({
@@ -49,13 +59,16 @@ scribeApp.controller('locations', function($scope, locationFactory){
 				right: 'month,agendaDay'
 			},
 		    eventClick: function( eventData ) {
+		    	
+
+
 		    	//on event click pull from db all event for the moment start with location id
 		    	var $infobox = $("<div id='infobox'></div>");
 				var $buttons = $("<button>Cancel</button> "+"<button>Submit</button>");
-				var $allDay = $("<input type='checkbox' value='allDay'><label for='allDay'>I am Available all day</label><p>OR</p><p>Select the shifts you can work</p>");
+				var $allDay = $("<p>Select the shifts you can work</p><input type='checkbox' class='checkbox' value='allDay'><label class='checkbox_text' for='allDay'>I am Available all day</label><p>OR</p>");
+		    	$infobox.append("<h3>"+eventData.start._d.toDateString()+"</h3>");				
 		    	$infobox.append($allDay);
-		    	$infobox.append("<p><input type='checkbox'><span>"+eventData.title+"</span></p>");
-		    	$infobox.append("<p><span>"+eventData.start._i+"</span></p>");				
+		    	$infobox.append("<p><input type='checkbox' class='checkbox'><span class='checkbox_text'>"+eventData.title+"</span></p>");
 				$infobox.append($buttons);
 				$overlay.append($infobox);
 		    	//add lighbox with the pulled info
@@ -66,11 +79,13 @@ scribeApp.controller('locations', function($scope, locationFactory){
 		    },
 			defaultDate: moment(),//gets todays date
 			editable: false,//makes the calendar static
-			eventLimit: true // allow "more" link when too many events			
+			eventLimit: true, // allow "more" link when too many events	
+			events:shifts
+
 		});//this can be a URL to get the shifts
 	}
 	$scope.working = "working with scope";
-	loadCalendar(shiftData());
+	loadCalendar(shifts);
 
 	locationFactory.allLocations(function (output){
 		$scope.locations = output;

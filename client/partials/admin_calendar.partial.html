@@ -1,70 +1,4 @@
 <head>
-
-<script>
-
-	$(document).ready(function() {
-		var $overlay = $("<div id='overlay'></div>");
-		var $infobox = $("<div id='infobox'></div>");
-		$overlay.after($infobox);
-		$("body").append($overlay);
-		$('#calendar').fullCalendar({
-			header: {
-				left: 'prev,next today',
-				center: 'title',
-				right: 'month,agendaWeek,agendaDay'
-			},
-		    eventClick: function( eventData ) {
-		    	//on event click pull from db all event for the moment start with location id
-		    	//add lighbox with the pulled info
-		    	$overlay.show();
-
-		    	console.log($overlay);
-		    	$overlay.click(function(){
-		    		$overlay.hide();
-		    	});
-		    },
-			defaultDate: moment(),
-			//makes the calendar static
-			editable: false,
-			eventLimit: true, // allow "more" link when too many events
-			//dummy events to test the front end
-			events: [
-				{
-					id: 999, //location id repeated everyday
-					title: 'Repeating Event',
-					start: '2015-09-01' //the start of a moment object
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: '2015-09-02'
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: '2015-09-03'
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: '2015-09-04'
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: '2015-09-05'
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: '2015-09-06'
-				}
-			]
-		});
-		
-	});
-
-</script>
 <style>
 
 	body {
@@ -91,16 +25,29 @@
 	#infobox {
 		background: rgba(255,255,255,1);
 		width: 500px;
-		height: 500px;
+		max-height: 300px;
 		position: absolute;
 		margin-top: 15%;
 		margin-left: 33%;
 		z-index: 2;
+		padding: 25px;
+		border-radius: 5px;
+		border: 3px green solid;
 	}
+
+	.checkbox {
+		
+		display: inline;
+	}
+
+	.checkbox_text {
+		padding-left: 5px;
+	}
+
 
 </style>
 </head>
-<body>
+<body ng-controller='locations'>
 	<nav>
 		<a href="#/createUser">CREATE USER</a> |
 		<a href="#/createLocation">CREATE LOCATION</a> |
